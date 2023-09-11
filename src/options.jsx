@@ -3,8 +3,7 @@ import {createRoot} from "react-dom/client";
 
 const test = (
     <div>
-        <h1>Hellow world</h1>
-        <p>aj jefalfjaw jfla;fkwa kkf alfkwjae; oalf jasflkjas;eflkjwa;fkf lksf lwakf ;e</p>
+        <h1>Options</h1>
     </div>
 )
 
