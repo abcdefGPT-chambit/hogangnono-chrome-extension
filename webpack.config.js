@@ -7,7 +7,8 @@ module.exports = {
     entry: {
         popup: './src/popup.jsx',
         options: './src/options.jsx',
-        background: './src/background.jsx'
+        background: './src/background.jsx',
+        contentScript: './src/contentScript.jsx'
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
