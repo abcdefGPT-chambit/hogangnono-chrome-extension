@@ -6,7 +6,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
     entry: {
         popup: './src/popup.jsx',
-        options: './src/options.jsx'
+        options: './src/options.jsx',
+        background: './src/background.jsx'
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
