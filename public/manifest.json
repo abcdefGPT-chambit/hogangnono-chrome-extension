@@ -1,6 +1,6 @@
 {
-    "name": "React Started Example",
-    "description": "Build an Extension!",
+    "name": "abcdefGPT extension",
+    "description": "Support for real estate selection",
     "version": "1.0",
     "manifest_version": 3,
     "action": {
@@ -11,7 +11,7 @@
     },
     "content_scripts": [
       {
-        "matches": ["<all_urls>"],
+        "matches": ["https://hogangnono.com/*"],
         "js": [
           "contentScript.js"
         ]
@@ -19,7 +19,6 @@
     ],
     "options_page": "options.html",
     "permissions": [
-      "tabs",
-      "bookmarks"
+      "tabs"
     ]
   }
