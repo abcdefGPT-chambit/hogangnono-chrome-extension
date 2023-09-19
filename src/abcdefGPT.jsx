@@ -19,7 +19,6 @@ function AbcdefGPT() {
         const jsonData = await response.json();
         if (jsonData.isSuccess) {
             setData(jsonData.result);
-            console.log(data.str1);
           } else {
             console.error('API 요청 실패:', jsonData.message);
           }
@@ -42,16 +41,22 @@ function AbcdefGPT() {
       <div className={divClassName}>
         <div className='custom-header'>
             <button className='close-button' onClick={toggleDivClickability}>
-            X
+                <span className='css-33lnss'>
+                    <span className='css-1oc9vj8'>
+                        <svg width="22" height="22" className='css-14vv9id' xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1 L21 21 M21 1 L1 21"/>
+                        </svg>
+                    </span>
+                </span>
             </button>
-            <div>
-                <h1>데이터를 표시하는 예시</h1>
-                {isLoading ? (
-                <p>데이터를 로드하는 중...</p>
-                ) : (
-                    <p>{data.str1}</p>
-                  )}
-            </div>
+        </div>
+        <div className='custom-content'>
+            <h1>데이터를 표시하는 예시</h1>
+            {isLoading ? (
+            <p>데이터를 로드하는 중...</p>
+            ) : (
+                <p>{data.str1}</p>
+                )}
         </div>
       </div>
     </div>
