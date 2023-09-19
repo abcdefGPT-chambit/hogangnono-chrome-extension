@@ -1,0 +1,9 @@
+.abcdefGPT-result-tab {
+    position: absolute;
+    top: 0;
+    left: 750px;
+    width: 375px;
+    height: 100%;
+    pointer-events: none;
+    background: lightblue;
+  }

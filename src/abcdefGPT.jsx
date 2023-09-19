@@ -1,18 +1,9 @@
 import React from 'react';
+import './abcdefGPT.css';
 
 function AbcdefGPT() {
-    const divStyle = {
-        position: 'absolute',
-        top: '0',
-        left: '750px',
-        width: '375px',
-        height: '100%',
-        pointerEvents: 'none',
-        background: "lightblue"
-      };
-    
       return (
-        <div id="abcdefGPT-result-tab" style={divStyle}>
+        <div className="abcdefGPT-result-tab">
           <button>버튼 텍스트</button>
         </div>
       );
