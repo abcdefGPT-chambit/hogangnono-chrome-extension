@@ -5,5 +5,30 @@
     width: 375px;
     height: 100%;
     pointer-events: none;
-    background: lightblue;
   }
+
+.clickable-div {
+    pointer-events: auto;
+  }
+
+.white-bg {
+    background-color: white;
+  }
+
+.custom-button {
+  margin-top: 5px;
+  background-color: #4d55b2;
+  color: white;
+  padding: 10px;
+  border-radius: 0px 10px 10px 0px;
+  pointer-events: auto;
+}
+
+
+body, th, td, input, select, textarea, button, pre {
+    font-family: 'SpoqaHanSans', 'SpoqaHanSansWeb', 'Apple SD Gothic Neo', 'Apple SD 산돌고딕 Neo', 'NanumGothic', '나눔고딕', sans-serif;
+    font-variant-ligatures: none;
+    -webkit-font-variant-ligatures: none;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}

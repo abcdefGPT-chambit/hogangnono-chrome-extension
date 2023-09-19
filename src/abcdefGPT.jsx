@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './abcdefGPT.css';
 
 function AbcdefGPT() {
-      return (
-        <div className="abcdefGPT-result-tab">
-          <button>버튼 텍스트</button>
-        </div>
-      );
+  const [isDivClickable, setIsDivClickable] = useState(false);
+
+  const toggleDivClickability = () => {
+    setIsDivClickable(!isDivClickable);
+  };
+
+  const divClassName = isDivClickable ? 'abcdefGPT-result-tab clickable-div white-bg' : 'abcdefGPT-result-tab';
+
+
+  return (
+    <div className={divClassName}>
+      <button className='custom-button' onClick={toggleDivClickability}>
+        AI 정보 정리
+      </button>
+    </div>
+  );
 }
 
 export default AbcdefGPT;
