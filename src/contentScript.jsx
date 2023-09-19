@@ -1,49 +1,34 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import AdditionalDiv from './AdditionalDiv.jsx';
+import AbcdefGPT from './abcdefGPT.jsx';
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   observer.observe(document.body, { childList: true, subtree: true });
-// });
+function CustomPage() {
+  
+}
 
 const observer = new MutationObserver((mutationsList, observer) => {
   const targetElement = document.querySelector('.sub-page.apt-sub-page-review'); //user review tab
+  const parentDiv = document.getElementById(`container`); //user review tab's grandparent div
+  const newDivName = "abcdefGPT"; //new div's name
 
-  if (targetElement) {
-    addReviewButton(targetElement);
+  if(targetElement) {
+    const existingDiv = targetElement.parentElement.querySelector(`div[name="${newDivName}"]`);
+    if(!existingDiv) {
+      const reactRootContainer = document.createElement('div');
+      reactRootContainer.setAttribute("name", newDivName);
+
+      targetElement.parentElement.appendChild(reactRootContainer);
+
+      const reactRoot = createRoot(reactRootContainer);
+      reactRoot.render(<AbcdefGPT />);
+    }
   } else {
-    const myButton = document.getElementById('myButton');
-    if (myButton) {
-      myButton.remove(); //remove button
+    const existingDiv = parentDiv.querySelector(`div[name="${newDivName}"]`);
+    if(existingDiv){
+      existingDiv.remove();
     }
   }
 });
-
-function addReviewButton(targetElement) {
-  // const reactContainer = document.createElement('div');
-  // targetElement.appendChild(reactContainer);
-
-  // const reactRoot = createRoot(reactContainer);
-  // reactRoot.render(<AdditionalDiv />);
-
-  if (!targetElement.querySelector('button')) {
-    var button = document.createElement('button');
-    button.textContent = 'button';
-    button.id = 'myButton';
-
-    button.addEventListener('click', () => {
-      //click event
-      console.log('clicked');
-    });
-
-    targetElement.appendChild(button);
-  }
-
-}
-
-function injectionAdditionalDiv() {
-  
-}
 
 // MutationObserver start (DOM Observe)
 observer.observe(document.body, { childList: true, subtree: true });
