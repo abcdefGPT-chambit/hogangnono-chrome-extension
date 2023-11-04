@@ -14,7 +14,7 @@
     height: 100%;
     pointer-events: none;
     display: block;
-  }
+}
 
 .custom-header {
   height: 56px;
@@ -57,7 +57,10 @@
 }
 
 .clickable-div {
-    pointer-events: auto;
+  max-height: 100vh;
+  overflow-y: auto;
+  pointer-events: auto;
+  user-select: none;
   }
 
 .white-bg {
