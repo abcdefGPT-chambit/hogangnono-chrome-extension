@@ -2,10 +2,6 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import AbcdefGPT from './abcdefGPT.jsx';
 
-function CustomPage() {
-  
-}
-
 const observer = new MutationObserver((mutationsList, observer) => {
   const targetElement = document.querySelector('.sub-page.apt-sub-page-review'); //user review tab
   const parentDiv = document.getElementById(`container`); //user review tab's grandparent div

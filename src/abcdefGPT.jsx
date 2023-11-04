@@ -12,9 +12,21 @@ function AbcdefGPT() {
 
   const divClassName = isDivClickable ? 'abcdefGPT-result-tab clickable-div white-bg' : 'abcdefGPT-result-tab hidden-div';
 
+  const title = document.title;
+  const matches = title.match(/'([^']+)'/);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const pathArray = window.location.pathname.split('/');
+        const aptcode = pathArray[2];
+
+        console.log(aptcode);
+
+        if (matches && matches[1]){
+          console.log(matches[1]);
+        }
+
         const response = await fetch('https://f7849c1c-faf4-4fed-b415-610711c64cbd.mock.pstmn.io/apiTest'); 
         const jsonData = await response.json();
         if (jsonData.isSuccess) {
