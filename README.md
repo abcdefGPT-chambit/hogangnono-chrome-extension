@@ -1,4 +1,4 @@
-# Chrome-Extension-Study
+# Chrome-Extension
 # 광운대학교 참빛설계학기를 위한 호갱노노 크롬 확장 프로그램
 ---
   
