@@ -19,7 +19,9 @@
 }
 
 .custom-header {
-  height: 56px;
+  height: 40px;
+  border-bottom: 8px solid #f3f3f3;
+
 }
 
 .css-33lnss {
@@ -70,10 +72,7 @@
   }
 
 .custom-content {
-  padding-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 300px;
+  flex-wrap: wrap;
 }
 
 .hidden-button {
@@ -143,4 +142,132 @@ body, th, td, input, select, textarea, button, pre {
 .teamName h1{
   color:#4d55b2;
   padding-bottom: 50px;
+}
+
+.menu_bar{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  border-bottom: 8px solid #f3f3f3;
+}
+
+.menu_bar ul li{
+  font-size: 13px;
+  font-weight: bold;
+  display: inline;
+  margin: 3px;
+  margin-bottom: 10px;
+  padding: 10px;
+  text-align: center;
+  background-color: #f3f4fc;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.menu_bar ul li a{
+  color: #584de4;
+}
+
+.apt_name{
+  margin-top: 15px;
+  text-align: center;
+}
+
+.content_header{
+  display: flex;
+  line-height: 40px;
+  font-weight: bold;
+  border-bottom: 2px solid #f3f3f3;
+}
+
+.content_header img{
+  width: 40px;
+  margin-left: 20px;
+}
+
+.content_main {
+  margin-left: 20px;
+  padding-bottom: 300px;
+
+}
+
+.topic{
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 50px;
+  border-bottom: 2px solid #f3f3f3;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  justify-content: center;
+}
+
+.topic a{
+  display: flex;
+  background-color: #f3f4fc;
+  height: 50px;
+  width: 60px;
+  color: #584de4;
+  font-size: 14px;
+  font-weight: bold;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.comments{
+  list-style: disc;
+  width: 250px;
+  margin-left: 30px;
+  margin-bottom: 10px;
+  line-height: 100%;
+  height: auto;
+}
+
+.comments a{
+  height: auto;
+  width: 250px;
+  word-break: break-all;
+  background-color: white;
+  color: black;
+  justify-content: left;
+  font-weight: lighter;
+}
+
+.content_main .content_box{
+  margin-top: 10px;
+  background-color: #C8CEFF;
+  border-radius: 15px;
+  width: 335px;
+  font-weight: bold;
+  font-size: 11px;
+}
+
+.seoulQ{
+  background-color: #f3f4fc;
+  border-radius: 15px;
+  text-align: center;
+  padding: 20px 0px;
+  display: flex;
+}
+
+.seoulQ a{
+  width: 270px;
+  margin: 0px 10px;
+}
+
+.seoulQ img, .seoulA img{
+  width: 40px;
+  margin-left: 10px;
+}
+
+.seoulA{
+  text-align: center;
+  padding: 20px 0px;
+  display: flex;
+}
+
+.seoulA a{
+  width: 270px;
+  margin: 0px 10px;
 }
