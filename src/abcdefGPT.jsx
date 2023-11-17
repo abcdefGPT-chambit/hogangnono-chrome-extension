@@ -6,6 +6,7 @@ import useFetch from './usefetch';
 
 function AbcdefGPT() {
   const [isDivClickable, setIsDivClickable] = useState(false);
+  const [userInput, setUserInput] = useState(''); // 사용자 입력 상태 추가
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [renderState, setRenderState] = useState('initial');
