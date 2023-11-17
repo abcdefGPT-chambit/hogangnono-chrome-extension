@@ -639,14 +639,14 @@ function AbcdefGPT() {
                     {visibleName && (
                       <h1 id='gptname'>abcdefGPT</h1>
                     )}   
-                    <div>
+                    <div className='test'>
                       {messages.map((message,index)=>(
                         <div key = {index}>{message}</div>
                       ))}
                     </div>
                     <div className='Msg_send'>
                       <input type='text' className='Msg_area' id='Msg_area' placeholder='거래량 분석 질문하기' value={inputText} onChange={handleInputChange}></input>
-                      <button onClick={handlePrint}>
+                      <button className='Msg_Btn' onClick={handlePrint}>
                         보내기
                       </button>
                     </div>
