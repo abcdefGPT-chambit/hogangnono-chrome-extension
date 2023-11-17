@@ -274,13 +274,14 @@ body, th, td, input, select, textarea, button, pre {
 }
 
 .GPT_container{
-  padding-top: 50px;
+  padding-top: 10px;
   width: 335px;
   text-align: center;
 }
 
 #gptname{
   color: #f3f3f3 ;
+  padding: 40px;
   margin-bottom: 100px;
 }
 
@@ -343,4 +344,23 @@ body, th, td, input, select, textarea, button, pre {
 
 .reviews{
   width: 290px;
+  font-size: 15px;
+  color: black
+}
+
+.reviews li a{
+  list-style-type: disc;
+  color: black;
+}
+
+.apt-price-topic{
+  font-weight: bold;
+}
+
+.apt-price-frame{
+  border-bottom: 1px solid #f3f3f3;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  width: 335px;
+  font-size: 15px;
 }

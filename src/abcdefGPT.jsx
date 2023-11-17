@@ -31,7 +31,7 @@ function AbcdefGPT() {
   };
 
   const handleClick_aptPrice =() =>{
-    setRenderState('aptPrice')
+    setRenderState('StartPage')
   };
 
   const handleClick_aptComment =() =>{
@@ -185,7 +185,6 @@ function AbcdefGPT() {
   }
 
   const aptURL = "https://abcdefgpt.site/getdata?apt_code="+aptCode+"&apt_name="+aptName
-  console.log(aptURL);
 
   const TestData = useFetch(aptURL);
   if(TestData !== undefined && TestData !== null && TestData.length){
@@ -300,103 +299,46 @@ function AbcdefGPT() {
                           key={item.apt_sq}
                           className={item.apt_sq==sqIsActive ? 'info-active': 'info-hidden'}
                         >
-                          <div>{item.apt_sq}          </div>
-                          <div>{item.avg_price}       </div>
-                          <div>{item.bottom_avg_price}</div>
-                          <div>{item.price_trend}     </div>
-                          <div>{item.recent_avg}      </div>
-                          <div>{item.recent_bottom}   </div>
-                          <div>{item.recent_top}      </div>
-                          <div>{item.top_avg_price}   </div>
-                          <div>{item.trade_trend}     </div>
-                        </div>
-                      ))}
-                  </div>
-
-
-                  {/*<h1 className='typing'>
-                    {TestData ? <div>{JSON.stringify(TestData.trades)}</div> : <p>Loading...</p>}
-    </h1>*/}
-
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-  
-  /* analyze apt price page */
-  
-  else if(renderState==='aptPrice'){
-    return (
-      <div className='custom-tab'>
-        <button className='custom-button' onClick={toggleDivClickability}>
-          AI 정보 정리
-        </button>
-        <div className={divClassName}>
-          <div className='custom-header'>
-              <div className='apt_name'>
-                <h3>{matches[1]}</h3>
-              </div>
-              <button className='close-button' onClick={toggleDivClickability}>
-                  <span className='css-33lnss'>
-                      <span className='css-1oc9vj8'>
-                          <svg width="22" height="22" className='css-14vv9id' xmlns="http://www.w3.org/2000/svg">
-                              <path d="M1 1 L21 21 M21 1 L1 21"/>
-                          </svg>
-                      </span>
-                  </span>
-              </button>
-          </div>
-          <div className='custom-content'>
-              <div className='menu_bar'>
-                <ul>
-                  <li style={{backgroundColor: '#C8CEFF'}}>
-                    <a onClick={handleClick_aptPrice}>아파트 거래 분석</a>
-                  </li>
-                  <li>
-                    <a onClick={handleClick_aptComment}>아파트 후기 분석</a>
-                  </li>
-                  <li>
-                    <a onClick={handleClick_seoulPrice}>서울시 거래량 분석</a>
-                  </li>
-                </ul>
-              </div>
-              <div className='aptPrice'>
-                <div className='content_header'>
-                  <img src="https://i.imgur.com/lYgSkrc.jpg" alt="logo"/>
-                  <a>아파트 거래 분석</a>
-                </div>
-                <div className='content_main'>
-                  <div className='custom-scroll-menu-container'>
-                    <ul>
-                     {TestData.trades.map((item)=>(
-                      <li
-                        key={item.apt_sq}
-                        className={(item.apt_sq===sqIsActive ? 'menu-active' : '')}  
-                        onClick={()=>handleSqClick(item.apt_sq)}                 
-                      >
-                        <a>{item.apt_sq}평</a>
-                      </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                      {TestData.trades.map((item)=>(
-                        <div 
-                          key={item.apt_sq}
-                          className={item.apt_sq==sqIsActive ? 'info-active': 'info-hidden'}
-                        >
-                          <div>{item.apt_sq}          </div>
-                          <div>{item.avg_price}       </div>
-                          <div>{item.bottom_avg_price}</div>
-                          <div>{item.price_trend}     </div>
-                          <div>{item.recent_avg}      </div>
-                          <div>{item.recent_bottom}   </div>
-                          <div>{item.recent_top}      </div>
-                          <div>{item.top_avg_price}   </div>
-                          <div>{item.trade_trend}     </div>
+                          <ul>
+                            {/*
+                          <li className='apt-price-frame'>
+                            <p className='apt-price-topic'>아파트 평수</p>
+                            <p>{item.apt_sq}</p>
+                          </li>
+                      */}
+                          <li className='apt-price-frame'>
+                            <p className='apt-price-topic'>아파트 평균 가격</p>
+                            <p>{item.avg_price}</p>
+                          </li>
+                          <li className='apt-price-frame'>
+                            <p className='apt-price-topic'>최근 상위 30% 층 가격</p>
+                            <p>{item.recent_top}</p>
+                          </li>
+                          <li className='apt-price-frame'>
+                            <p className='apt-price-topic'>아파트 하위 30% 층 가격</p>
+                            <p>{item.bottom_avg_price}</p>
+                          </li>
+                          <li className='apt-price-frame'>
+                            <p className='apt-price-topic'>아파트 가격 동향</p>
+                            <p>{item.price_trend}</p>
+                          </li>
+                          <li className='apt-price-frame'>
+                            <p className='apt-price-topic'>아파트 최근 평균</p>
+                            <p>{item.recent_avg}</p>
+                          </li>
+                          <li className='apt-price-frame'>
+                            <p className='apt-price-topic'>최근 아파트 상위 30% 층 가격</p>
+                            <p>{item.top_avg_price}</p>
+                          </li>
+                          <li className='apt-price-frame'>
+                            <p className='apt-price-topic'>최근 아파트 하위 30% 층 가격</p>
+                            <p>{item.recent_bottom}</p>
+                          </li>
+                          <li className='apt-price-frame'>
+                            <p className='apt-price-topic'>거래량 동향</p>
+                            <p>{item.trade_trend}</p>
+                          </li>
+                          </ul>
                         </div>
                       ))}
                   </div>
