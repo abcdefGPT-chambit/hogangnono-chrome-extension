@@ -15,7 +15,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
 
       targetElement.parentElement.appendChild(reactRootContainer);
 
-      reactRoot = createRoot(reactRootContainer);
+      const reactRoot = createRoot(reactRootContainer);
       reactRoot.render(<AbcdefGPT />);
     }
   } else {
