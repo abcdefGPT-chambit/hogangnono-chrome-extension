@@ -4,6 +4,7 @@
   left: 750px;
   height: 100%;
   pointer-events: none;
+  z-index: 15;
 }
 
 .abcdefGPT-result-tab {
@@ -90,6 +91,7 @@
 
 .custom-button {
   margin-top: 5px;
+  top: 0px;
   background-color: #4d55b2;
   color: white;
   padding: 10px;
@@ -215,22 +217,25 @@ body, th, td, input, select, textarea, button, pre {
 }
 
 .comments{
-  list-style: disc;
-  width: 290px;
-  margin-left: 10px;
+  list-style-type: disc;
+  width: 270px;
+  margin-left: 30px;
   margin-bottom: 10px;
   line-height: 100%;
   height: auto;
+  display: list-item;
 }
 
 .comments a{
+  display: list-item;
   height: auto;
-  width: 270px;
+  width: 250px;
   word-break: break-all;
   background-color: white;
   color: black;
   justify-content: left;
-  font-weight: lighter;
+  font-weight: 400;
+  list-style-type: square;
 }
 
 .content_main .content_box{
@@ -239,7 +244,7 @@ body, th, td, input, select, textarea, button, pre {
   border-radius: 15px;
   width: 335px;
   font-weight: bold;
-  font-size: 11px;
+  font-size: 15px;
 }
 
 .seoulQ{
@@ -270,7 +275,6 @@ body, th, td, input, select, textarea, button, pre {
 
 .seoulA a{
   width: 270px;
-  margin: 0px 10px;
 }
 
 .GPT_container{
@@ -282,7 +286,7 @@ body, th, td, input, select, textarea, button, pre {
 #gptname{
   color: #f3f3f3 ;
   padding: 40px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 .Msg_send{
@@ -375,16 +379,51 @@ body, th, td, input, select, textarea, button, pre {
   font-size: 15px;
 }
 
-.test div{
-  font-size: 11px;
+.GPT_Conv div{
+  font-size: 15px;
   font-weight: bold;
   border-radius: 15px;
   padding: 20px 0px;
 }
 
-.test div:nth-child(even){
+.GPT_Conv div:nth-child(even){
   background-color: #C8CEFF;
+  margin-bottom: 10px;
 }
-.test div:nth-child(odd){
+.GPT_Conv div:nth-child(odd){
   background-color: #f3f4fc;
+}
+
+.GPT_Conv div a{
+  margin: 0px 20px;
+}
+
+.noDataInfo{
+  margin: 0px 20px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.allAptInfo{
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.allAptInfo li{
+  padding-top: 10px;
+  padding: 10px 0px;
+  border-radius: 5px;
+}
+
+.allAptInfo li:nth-child(even){
+  background-color: #c8CEFF;
+}
+
+.allAptInfo li:nth-child(odd){
+  background-color: #f3f4fc;
+}
+
+.toggle-group{
+  top: 50px
 }
