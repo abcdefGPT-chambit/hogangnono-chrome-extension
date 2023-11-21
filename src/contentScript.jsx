@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import AbcdefGPT from './abcdefGPT.jsx';
 
 const observer = new MutationObserver((mutationsList, observer) => {
-  const targetElement = document.querySelector('.sub-page.apt-sub-page-review'); //user review tab
+  const targetElement = document.querySelector('.scene-apt'); //user review tab
   const parentDiv = document.getElementById(`container`); //user review tab's grandparent div
   const newDivName = "abcdefGPT"; //new div's name
 

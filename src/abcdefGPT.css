@@ -1,7 +1,7 @@
 .custom-tab {
   position: absolute;
   top: 0;
-  left: 750px;
+  left: 375px;
   height: 100%;
   pointer-events: none;
   z-index: 15;
