@@ -42,7 +42,7 @@ function AbcdefGPT() {
         
           setSqIsActive(TestData.trades[0].apt_sq)
         }else{
-          setRenderState('noData')
+          setRenderState('aptList')
         }
         
       }, 2000);
@@ -62,12 +62,12 @@ function AbcdefGPT() {
     setRenderState('seoulPrice')
   };
 
-  const handleClick_chatGPT =() =>{
-    setRenderState('chatGPT')
+  const handleClick_aptList =() =>{
+    setRenderState('aptList')
   };
 
-  const handleClick_aiRecommend =() =>{
-    setRenderState('aiRecommend')
+  const handleClick_seoulPrice2 =() =>{
+    setRenderState('seoulPrice2')
   };
 
   const handleShowMoreEnv = () =>{
@@ -171,6 +171,7 @@ function AbcdefGPT() {
     console.log(answer);
   } catch (error) {
     console.error('서버로부터 응답을 받는데 실패했습니다:', error);
+    setVisibleLoading(false);
     setMessages(prevResponse=> [...prevResponse,'서버로부터 응답을 받는데 실패했습니다.']);
     }
   }
@@ -219,7 +220,7 @@ function AbcdefGPT() {
       }
       return part;
     })
-    return <>{parts}</>
+    return <p>{parts}</p>
   }
 
 
@@ -233,7 +234,10 @@ function AbcdefGPT() {
         <button className='custom-button' onClick={toggleDivClickability}>
           AI 정보 정리
         </button>
-        <div className={divClassName}>
+        <div style={{position:'absolute', left:'235px', top:'-190px'}} className={divClassName}>
+          <div className='apt_name'>
+            <h3>{matches[1]}</h3>
+          </div>
           <div className='teamName'>
             <h1>abcdefGPT</h1>
           </div>
@@ -270,19 +274,13 @@ function AbcdefGPT() {
         <button className='custom-button' onClick={toggleDivClickability}>
           AI 정보 정리
         </button>
-        <div className={divClassName}>
+        <div style={{position:'absolute', left:'235px', top:'-190px'}} className={divClassName}>
           <div className='custom-header'>
               <div className='apt_name'>
                 <h3>{matches[1]}</h3>
               </div>
               <button className='close-button' onClick={toggleDivClickability}>
-                  <span className='css-33lnss'>
-                      <span className='css-1oc9vj8'>
-                          <svg width="22" height="22" className='css-14vv9id' xmlns="http://www.w3.org/2000/svg">
-                              <path d="M1 1 L21 21 M21 1 L1 21"/>
-                          </svg>
-                      </span>
-                  </span>
+              <span class="css-33lnss"><span class="css-1oc9vj8"><span class="css-1t5a6ka"><svg viewBox="0 0 40 40" class="css-14vv9id"><path d="M7 7l26 26m0-26L7 33"></path></svg><span class="blind"></span></span></span></span>
               </button>
           </div>
           <div className='custom-content'>
@@ -302,7 +300,7 @@ function AbcdefGPT() {
               <div className='aptPrice'>
                 <div className='content_header'>
                   <img src="https://i.imgur.com/lYgSkrc.jpg" alt="logo"/>
-                  <a>아파트 거래 분석</a>
+                  <a>아파트 거래 분석</a><a style={{fontSize:'10px', marginLeft:'20px'}}>※최근 1년 실거래를 분석한 결과입니다.</a>
                 </div>
                 <div className='content_main'>
                   <div className='custom-scroll-menu-container'>
@@ -318,7 +316,7 @@ function AbcdefGPT() {
                       ))}
                     </ul>
                   </div>
-                  <div>
+                  <div style={{marginTop:'10px'}}>
                       {TestData.trades.map((item)=>(
                         <div 
                           key={item.apt_sq}
@@ -332,40 +330,56 @@ function AbcdefGPT() {
                           </li>
                       */}
                           <li className='apt-price-frame'>
-                            <p className='apt-price-topic'>평균 가격</p>
+                            <div className='apt-price-info'>
+                              <p className='apt-price-topic'>평균 가격</p>
+                            </div>
                             {renderTextwithNumbersRed(item.avg_price)}
                           </li>
                           <li className='apt-price-frame'>
+                            <div className='apt-price-info'>
                             <p className='apt-price-topic'>고층 평균 가격</p>
+                            </div>
                             {renderTextwithNumbersRed(item.top_avg_price)}
                           </li>
                           <li className='apt-price-frame'>
+                            <div className='apt-price-info'>
                             <p className='apt-price-topic'>저층 평균 가격</p>
+                            </div>
                             {renderTextwithNumbersRed(item.bottom_avg_price)}
                             
                           </li>
                           <li className='apt-price-frame'>
+                            <div className='apt-price-info'>
                             <p className='apt-price-topic'>거래량 동향</p>
+                            </div>
                             {renderTextwithNumbersRed(item.trade_trend)}
                            
                           </li>
                           <li className='apt-price-frame'>
+                            <div className='apt-price-info'>
                             <p className='apt-price-topic'>최근 평균 가격</p>
+                            </div>
                             {renderTextwithNumbersRed(item.recent_avg)}
                            
                           </li>
                           <li className='apt-price-frame'>
+                          <div className='apt-price-info'>
                             <p className='apt-price-topic'>최고가 대비 최근가격</p>
+                            </div>
                             {renderTextwithNumbersRed(item.recent_top)}
                             
                           </li>
                           <li className='apt-price-frame'>
+                          <div className='apt-price-info'>
                             <p className='apt-price-topic'>최저가 대비 최근가격 </p>
+                            </div>
                             {renderTextwithNumbersRed(item.recent_bottom)}
                             
                           </li>
                           <li className='apt-price-frame'>
+                          <div className='apt-price-info'>
                             <p className='apt-price-topic'>가격 동향</p>
+                            </div>
                             {renderTextwithNumbersRed(item.price_trend)}
                             
                           </li>
@@ -395,19 +409,13 @@ function AbcdefGPT() {
         <button className='custom-button' onClick={toggleDivClickability}>
           AI 정보 정리
         </button>
-        <div className={divClassName}>
+        <div style={{position:'absolute', left:'235px', top:'-190px'}} className={divClassName}>
           <div className='custom-header'>
               <div className='apt_name'>
                 <h3>{matches[1]}</h3>
               </div>
               <button className='close-button' onClick={toggleDivClickability}>
-                  <span className='css-33lnss'>
-                      <span className='css-1oc9vj8'>
-                          <svg width="22" height="22" className='css-14vv9id' xmlns="http://www.w3.org/2000/svg">
-                              <path d="M1 1 L21 21 M21 1 L1 21"/>
-                          </svg>
-                      </span>
-                  </span>
+              <span class="css-33lnss"><span class="css-1oc9vj8"><span class="css-1t5a6ka"><svg viewBox="0 0 40 40" class="css-14vv9id"><path d="M7 7l26 26m0-26L7 33"></path></svg><span class="blind"></span></span></span></span>
               </button>
           </div>
           <div className='custom-content'>
@@ -594,19 +602,13 @@ function AbcdefGPT() {
         <button className='custom-button' onClick={toggleDivClickability}>
           AI 정보 정리
         </button>
-        <div className={divClassName}>
+        <div style={{position:'absolute', left:'235px', top:'-190px'}} className={divClassName}>
           <div className='custom-header'>
               <div className='apt_name'>
                 <h3>{matches[1]}</h3>
               </div>
               <button className='close-button' onClick={toggleDivClickability}>
-                  <span className='css-33lnss'>
-                      <span className='css-1oc9vj8'>
-                          <svg width="22" height="22" className='css-14vv9id' xmlns="http://www.w3.org/2000/svg">
-                              <path d="M1 1 L21 21 M21 1 L1 21"/>
-                          </svg>
-                      </span>
-                  </span>
+              <span class="css-33lnss"><span class="css-1oc9vj8"><span class="css-1t5a6ka"><svg viewBox="0 0 40 40" class="css-14vv9id"><path d="M7 7l26 26m0-26L7 33"></path></svg><span class="blind"></span></span></span></span>
               </button>
           </div>
           <div className='custom-content'>
@@ -657,7 +659,7 @@ function AbcdefGPT() {
                   <div className='content_box'>
                     <div className='seoulQ'>
                       <img src="https://i.imgur.com/G77v4vj.jpg"></img>
-                      <a>23년 들어서 거래량의 방향성은 어때? 완결된 한국어 문장으로 대답해줘</a>
+                      <a>23년 들어서 거래량의 방향성은 어때?</a>
                     </div>
                     <div className='seoulA'>
                       <img src="https://i.imgur.com/ykkBbKw.png"></img>
@@ -679,12 +681,16 @@ function AbcdefGPT() {
                     </div>
                     <div>
                       {visibleLoading &&(
-                        <Typewriter
-                          words={['Is Loading...']}
-                          loop='false'
-                          cursor
-                          >
-                        </Typewriter>
+                        <div className='loading-gpt'>
+                          
+                          <div className='gif-image'>
+                            <Oval
+                              color="#584de4"
+                              height={50}
+                              width={50}
+                            />
+                          </div>
+                        </div>
                       )}
                     </div>
                     <div className='Msg_send'>
@@ -707,28 +713,32 @@ function AbcdefGPT() {
   
   /*ChatGPT API page*/
   
-  else if(renderState==='noData'){
+  else if(renderState==='aptList'){
     return (
       <div className='custom-tab'>
         <button className='custom-button' onClick={toggleDivClickability}>
           AI 정보 정리
         </button>
-        <div className={divClassName}>
+        <div style={{position:'absolute', left:'235px', top:'-190px'}} className={divClassName}>
           <div className='custom-header'>
               <div className='apt_name'>
                 <h3>{matches[1]}</h3>
               </div>
               <button className='close-button' onClick={toggleDivClickability}>
-                  <span className='css-33lnss'>
-                      <span className='css-1oc9vj8'>
-                          <svg width="22" height="22" className='css-14vv9id' xmlns="http://www.w3.org/2000/svg">
-                              <path d="M1 1 L21 21 M21 1 L1 21"/>
-                          </svg>
-                      </span>
-                  </span>
+              <span class="css-33lnss"><span class="css-1oc9vj8"><span class="css-1t5a6ka"><svg viewBox="0 0 40 40" class="css-14vv9id"><path d="M7 7l26 26m0-26L7 33"></path></svg><span class="blind"></span></span></span></span>
               </button>
           </div>
           <div className='custom-content'>
+            <div className='menu_bar'>
+                <ul>
+                  <li style={{backgroundColor: '#C8CEFF'}}>
+                    <a onClick={handleClick_aptList}>제공되는 아파트</a>
+                  </li>
+                  <li>
+                    <a onClick={handleClick_seoulPrice2}>서울시 거래량 분석</a>
+                  </li>
+                </ul>
+            </div>
               <div className='noDataInfo'>
                 <h3 style={{borderBottom:"1px solid #f3f3f3", padding:'10px 0px'}}>
                   해당 아파트는 정보가 제공되지 않습니다.
@@ -744,6 +754,115 @@ function AbcdefGPT() {
                     </li>
                   ))}
                 </ul>
+              </div>
+          </div>
+              
+        </div>
+      </div>
+    );
+  }
+  else if(renderState==='seoulPrice2'){
+    return (
+      <div className='custom-tab'>
+        <button className='custom-button' onClick={toggleDivClickability}>
+          AI 정보 정리
+        </button>
+        <div style={{position:'absolute', left:'235px', top:'-190px'}} className={divClassName}>
+          <div className='custom-header'>
+              <div className='apt_name'>
+                <h3>{matches[1]}</h3>
+              </div>
+              <button className='close-button' onClick={toggleDivClickability}>
+              <span class="css-33lnss"><span class="css-1oc9vj8"><span class="css-1t5a6ka"><svg viewBox="0 0 40 40" class="css-14vv9id"><path d="M7 7l26 26m0-26L7 33"></path></svg><span class="blind"></span></span></span></span>
+              </button>
+          </div>
+          <div className='custom-content'>
+              <div className='menu_bar'>
+                <ul>
+                  <li>
+                    <a onClick={handleClick_aptList}>제공되는 아파트</a>
+                  </li>
+                  <li style={{backgroundColor: '#C8CEFF'}}>
+                    <a onClick={handleClick_seoulPrice2}>서울시 거래량 분석</a>
+                  </li>
+                </ul>
+            </div>
+              <div className='aptPrice'>
+                <div className='content_header'>
+                  <img src="https://i.imgur.com/lYgSkrc.jpg" alt="logo"/>
+                  <a>서울시 거래량 분석</a>
+                </div>
+                <div className='content_main'>
+                  <div className='content_box'>
+                    <div className='seoulQ'>
+                      <img src="https://i.imgur.com/G77v4vj.jpg"></img>
+                      <a>8월과 9월 사이에 거래량의 비율이 가장 많이 증가한 위치와 몇퍼센트인지 알려줘</a>
+                    </div>
+                    <div className='seoulA'>
+                      <img src="https://i.imgur.com/ykkBbKw.png"></img>
+                      <div style={{display:'inline', width:'270px'}}>
+                        <a style={{color : '#FF0000'}}>'중랑구'</a><a>에서 8월에서 9월 사이에 거래량이 </a><a style={{color : '#FF0000'}}>약 42.86% 상승</a><a>했습니다.</a>
+                      </div>
+                      
+                    </div>
+                  </div>
+                  <div className='content_box'>
+                    <div className='seoulQ'>
+                      <img src="https://i.imgur.com/G77v4vj.jpg"></img>
+                      <a>8월과 9월 사이에 거래량의 비율이 가장 많이 감소한 위치와 몇퍼센트인지 알려줘</a>
+                    </div>
+                    <div className='seoulA'>
+                      <img src="https://i.imgur.com/ykkBbKw.png"></img>
+                      <div style={{display:'inline', width:'270px'}}>
+                        <a>거래량이 가장 많이 감소한 위치는 </a><a style={{color : '#FF0000'}}>'강북구'</a>이며, 감소율은 <a style={{color : '#FF0000'}}>약 73.66%</a><a>입니다.</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className='content_box'>
+                    <div className='seoulQ'>
+                      <img src="https://i.imgur.com/G77v4vj.jpg"></img>
+                      <a>23년 들어서 거래량의 방향성은 어때?</a>
+                    </div>
+                    <div className='seoulA'>
+                      <img src="https://i.imgur.com/ykkBbKw.png"></img>
+                      <div style={{display:'inline', width:'270px'}}>
+                        <a>23년에 들어서 거래량은 대체로 </a><a style={{color : '#FF0000'}}>증가</a><a>하는 추세를 보였습니다. 1월에 </a><a style={{color : '#FF0000'}}>1411건</a><a>에서 시작하여 6월에는 </a><a  style={{color : '#FF0000'}}>3845건</a><a>으로 증가하였습니다. 그 후 7월에는 약간 </a><a  style={{color : '#FF0000'}}>감소</a><a>하였지만, 8월에는 다시 증가하여 </a><a style={{color : '#FF0000'}}>3852건</a><a>을 기록하였습니다. 그러나 9월에는 다시 감소하여 </a><a style={{color : '#FF0000'}}>3360건</a><a>을 기록하였습니다.</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className='GPT_container'>
+                    {visibleName && (
+                      <h1 id='gptname'>abcdefGPT</h1>
+                    )}   
+                    <div className='GPT_Conv'>
+                      {messages.map((message,index)=>(
+                        <div key = {index}>
+                          <a>{message}</a>
+                        </div>
+                      ))}
+                    </div>
+                    <div>
+                      {visibleLoading &&(
+                        <div className='loading-gpt'>
+                          
+                          <div className='gif-image'>
+                            <Oval
+                              color="#584de4"
+                              height={50}
+                              width={50}
+                            />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    <div className='Msg_send'>
+                      <input type='text' className='Msg_area' id='Msg_area' placeholder='거래량 분석 질문하기' value={inputText} onKeyDown={handleGptKeyDown} onChange={handleInputChange}></input>
+                      <button className='Msg_Btn' onClick={handlePrint}>
+                        보내기
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
           </div>
               
