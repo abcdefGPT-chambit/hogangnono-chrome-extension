@@ -30,6 +30,7 @@ function AbcdefGPT() {
   const [visibleName, setvisibleName] = useState(true);
   const [sqIsActive, setSqIsActive] = useState('');
   const [visibleLoading, setVisibleLoading] = useState(false);
+  const [buttonHover, setButtonHover] = useState(false);
 
 
 
@@ -205,6 +206,7 @@ function AbcdefGPT() {
     console.log(TestData);
   }
 
+
   const handleSqClick = (itemName) =>{
     setSqIsActive(itemName);
   }
@@ -223,6 +225,19 @@ function AbcdefGPT() {
     return <p>{parts}</p>
   }
 
+  const handleMouseEnter = () => {
+    setButtonHover(true);
+  };
+
+  // 마우스가 버튼에서 벗어날 때 호출될 함수
+  const handleMouseLeave = () => {
+    setButtonHover(false);
+  };
+
+  const buttonStyle = {
+    textDecoration: buttonHover ? 'underline': 'none',
+  };
+
 
 
 
@@ -231,10 +246,10 @@ function AbcdefGPT() {
   if(renderState==='initial'){
     return (
       <div className='custom-tab'>
-        <button className='custom-button' onClick={toggleDivClickability}>
-          AI 정보 정리
+        <button className='custom-button' onClick={toggleDivClickability} style={buttonStyle} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          abcdefGPT 아파트 분석
         </button>
-        <div style={{position:'absolute', left:'235px', top:'-190px'}} className={divClassName}>
+        <div style={{position:'absolute', left:'375px', top:'-190px'}} className={divClassName}>
           <div className='apt_name'>
             <h3>{matches[1]}</h3>
           </div>
@@ -271,23 +286,29 @@ function AbcdefGPT() {
   else if(renderState==='StartPage'){
     return (
       <div className='custom-tab'>
-        <button className='custom-button' onClick={toggleDivClickability}>
-          AI 정보 정리
+        <button className='custom-button' onClick={toggleDivClickability} style={buttonStyle} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          abcdefGPT 아파트 분석
         </button>
-        <div style={{position:'absolute', left:'235px', top:'-190px'}} className={divClassName}>
+        <div style={{position:'absolute', left:'375px', top:'-190px'}} className={divClassName}>
           <div className='custom-header'>
               <div className='apt_name'>
                 <h3>{matches[1]}</h3>
               </div>
               <button className='close-button' onClick={toggleDivClickability}>
-              <span class="css-33lnss"><span class="css-1oc9vj8"><span class="css-1t5a6ka"><svg viewBox="0 0 40 40" class="css-14vv9id"><path d="M7 7l26 26m0-26L7 33"></path></svg><span class="blind"></span></span></span></span>
+                <span className='css-33lnss'>
+                      <span className='css-1oc9vj8'>
+                          <svg viewBox='0 0 30 30' width="22" height="22" className='css-14vv9id' xmlns="http://www.w3.org/2000/svg">
+                              <path d="M1 1 L21 21 M21 1 L1 21"/>
+                          </svg>
+                      </span>
+                  </span>
               </button>
           </div>
           <div className='custom-content'>
               <div className='menu_bar'>
                 <ul>
-                  <li style={{backgroundColor: '#C8CEFF'}}>
-                    <a onClick={handleClick_aptPrice}>아파트 거래 분석</a>
+                  <li style={{backgroundColor: '#5963D9',border: '1px solid #5963d9'}}>
+                    <a style={{color:'white'}} onClick={handleClick_aptPrice}>아파트 거래 분석</a>
                   </li>
                   <li>
                     <a onClick={handleClick_aptComment}>아파트 후기 분석</a>
@@ -406,16 +427,22 @@ function AbcdefGPT() {
   else if(renderState==='aptComment'){
     return (
       <div ref={divRef} className='custom-tab'>
-        <button className='custom-button' onClick={toggleDivClickability}>
-          AI 정보 정리
+        <button className='custom-button' onClick={toggleDivClickability} style={buttonStyle} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          abcdefGPT 아파트 분석
         </button>
-        <div style={{position:'absolute', left:'235px', top:'-190px'}} className={divClassName}>
+        <div style={{position:'absolute', left:'375px', top:'-190px'}} className={divClassName}>
           <div className='custom-header'>
               <div className='apt_name'>
                 <h3>{matches[1]}</h3>
               </div>
               <button className='close-button' onClick={toggleDivClickability}>
-              <span class="css-33lnss"><span class="css-1oc9vj8"><span class="css-1t5a6ka"><svg viewBox="0 0 40 40" class="css-14vv9id"><path d="M7 7l26 26m0-26L7 33"></path></svg><span class="blind"></span></span></span></span>
+              <span className='css-33lnss'>
+                      <span className='css-1oc9vj8'>
+                          <svg viewBox='0 0 30 30' width="22" height="22" className='css-14vv9id' xmlns="http://www.w3.org/2000/svg">
+                              <path d="M1 1 L21 21 M21 1 L1 21"/>
+                          </svg>
+                      </span>
+                  </span>
               </button>
           </div>
           <div className='custom-content'>
@@ -424,8 +451,8 @@ function AbcdefGPT() {
                   <li>
                     <a onClick={handleClick_aptPrice}>아파트 거래 분석</a>
                   </li>
-                  <li style={{backgroundColor: '#C8CEFF'}}>
-                    <a onClick={handleClick_aptComment}>아파트 후기 분석</a>
+                  <li style={{backgroundColor: '#5963D9',border: '1px solid #5963d9'}}>
+                    <a style={{color:'white'}} onClick={handleClick_aptComment}>아파트 후기 분석</a>
                   </li>
                   <li>
                     <a onClick={handleClick_seoulPrice}>서울시 거래량 분석</a>
@@ -599,16 +626,22 @@ function AbcdefGPT() {
   else if(renderState==='seoulPrice'){
     return (
       <div className='custom-tab'>
-        <button className='custom-button' onClick={toggleDivClickability}>
-          AI 정보 정리
+        <button className='custom-button' onClick={toggleDivClickability} style={buttonStyle} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          abcdefGPT 아파트 분석
         </button>
-        <div style={{position:'absolute', left:'235px', top:'-190px'}} className={divClassName}>
+        <div style={{position:'absolute', left:'375px', top:'-190px'}} className={divClassName}>
           <div className='custom-header'>
               <div className='apt_name'>
                 <h3>{matches[1]}</h3>
               </div>
               <button className='close-button' onClick={toggleDivClickability}>
-              <span class="css-33lnss"><span class="css-1oc9vj8"><span class="css-1t5a6ka"><svg viewBox="0 0 40 40" class="css-14vv9id"><path d="M7 7l26 26m0-26L7 33"></path></svg><span class="blind"></span></span></span></span>
+                <span className='css-33lnss'>
+                      <span className='css-1oc9vj8'>
+                          <svg viewBox='0 0 30 30' width="22" height="22" className='css-14vv9id' xmlns="http://www.w3.org/2000/svg">
+                              <path d="M1 1 L21 21 M21 1 L1 21"/>
+                          </svg>
+                      </span>
+                  </span>
               </button>
           </div>
           <div className='custom-content'>
@@ -620,8 +653,8 @@ function AbcdefGPT() {
                   <li>
                     <a onClick={handleClick_aptComment}>아파트 후기 분석</a>
                   </li>
-                  <li style={{backgroundColor: '#C8CEFF'}}>
-                    <a onClick={handleClick_seoulPrice}>서울시 거래량 분석</a>
+                  <li style={{backgroundColor: '#5963D9',border: '1px solid #5963d9'}}>
+                    <a style={{color:'white'}} onClick={handleClick_seoulPrice}>서울시 거래량 분석</a>
                   </li>
                 </ul>
               </div>
@@ -693,10 +726,11 @@ function AbcdefGPT() {
                         </div>
                       )}
                     </div>
+                    <div style={{height:'10px'}}></div>
                     <div className='Msg_send'>
                       <input type='text' className='Msg_area' id='Msg_area' placeholder='거래량 분석 질문하기' value={inputText} onKeyDown={handleGptKeyDown} onChange={handleInputChange}></input>
                       <button className='Msg_Btn' onClick={handlePrint}>
-                        보내기
+                        <img src='https://i.imgur.com/QtJ2sSp.png'/>
                       </button>
                     </div>
                   </div>
@@ -716,23 +750,29 @@ function AbcdefGPT() {
   else if(renderState==='aptList'){
     return (
       <div className='custom-tab'>
-        <button className='custom-button' onClick={toggleDivClickability}>
-          AI 정보 정리
+        <button className='custom-button' onClick={toggleDivClickability} style={buttonStyle} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          abcdefGPT 아파트 분석
         </button>
-        <div style={{position:'absolute', left:'235px', top:'-190px'}} className={divClassName}>
+        <div style={{position:'absolute', left:'375px', top:'-190px'}} className={divClassName}>
           <div className='custom-header'>
               <div className='apt_name'>
                 <h3>{matches[1]}</h3>
               </div>
               <button className='close-button' onClick={toggleDivClickability}>
-              <span class="css-33lnss"><span class="css-1oc9vj8"><span class="css-1t5a6ka"><svg viewBox="0 0 40 40" class="css-14vv9id"><path d="M7 7l26 26m0-26L7 33"></path></svg><span class="blind"></span></span></span></span>
+              <span className='css-33lnss'>
+                      <span className='css-1oc9vj8'>
+                          <svg viewBox='0 0 30 30' width="22" height="22" className='css-14vv9id' xmlns="http://www.w3.org/2000/svg">
+                              <path d="M1 1 L21 21 M21 1 L1 21"/>
+                          </svg>
+                      </span>
+                  </span>
               </button>
           </div>
           <div className='custom-content'>
             <div className='menu_bar'>
                 <ul>
-                  <li style={{backgroundColor: '#C8CEFF'}}>
-                    <a onClick={handleClick_aptList}>제공되는 아파트</a>
+                  <li style={{backgroundColor: '#5963D9',border: '1px solid #5963d9'}}>
+                    <a style={{color:'white'}} onClick={handleClick_aptList}>제공되는 아파트</a>
                   </li>
                   <li>
                     <a onClick={handleClick_seoulPrice2}>서울시 거래량 분석</a>
@@ -764,16 +804,22 @@ function AbcdefGPT() {
   else if(renderState==='seoulPrice2'){
     return (
       <div className='custom-tab'>
-        <button className='custom-button' onClick={toggleDivClickability}>
-          AI 정보 정리
+        <button className='custom-button' onClick={toggleDivClickability} style={buttonStyle} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          abcdefGPT 아파트 분석
         </button>
-        <div style={{position:'absolute', left:'235px', top:'-190px'}} className={divClassName}>
+        <div style={{position:'absolute', left:'375px', top:'-190px'}} className={divClassName}>
           <div className='custom-header'>
               <div className='apt_name'>
                 <h3>{matches[1]}</h3>
               </div>
               <button className='close-button' onClick={toggleDivClickability}>
-              <span class="css-33lnss"><span class="css-1oc9vj8"><span class="css-1t5a6ka"><svg viewBox="0 0 40 40" class="css-14vv9id"><path d="M7 7l26 26m0-26L7 33"></path></svg><span class="blind"></span></span></span></span>
+              <span className='css-33lnss'>
+                      <span className='css-1oc9vj8'>
+                          <svg viewBox='0 0 30 30' width="22" height="22" className='css-14vv9id' xmlns="http://www.w3.org/2000/svg">
+                              <path d="M1 1 L21 21 M21 1 L1 21"/>
+                          </svg>
+                      </span>
+                  </span>
               </button>
           </div>
           <div className='custom-content'>
@@ -782,8 +828,8 @@ function AbcdefGPT() {
                   <li>
                     <a onClick={handleClick_aptList}>제공되는 아파트</a>
                   </li>
-                  <li style={{backgroundColor: '#C8CEFF'}}>
-                    <a onClick={handleClick_seoulPrice2}>서울시 거래량 분석</a>
+                  <li style={{backgroundColor: '#5963D9',border: '1px solid #5963d9'}}>
+                    <a style={{color:'white'}} onClick={handleClick_seoulPrice2}>서울시 거래량 분석</a>
                   </li>
                 </ul>
             </div>
@@ -855,10 +901,11 @@ function AbcdefGPT() {
                         </div>
                       )}
                     </div>
+                    <div style={{height:'10px'}}></div>
                     <div className='Msg_send'>
                       <input type='text' className='Msg_area' id='Msg_area' placeholder='거래량 분석 질문하기' value={inputText} onKeyDown={handleGptKeyDown} onChange={handleInputChange}></input>
                       <button className='Msg_Btn' onClick={handlePrint}>
-                        보내기
+                        <img src='https://i.imgur.com/QtJ2sSp.png'/>
                       </button>
                     </div>
                   </div>

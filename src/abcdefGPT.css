@@ -1,10 +1,9 @@
 .custom-tab {
   position: absolute;
   top: 190px;
-  left: 140px;
+  left: 0px;
   height: 100%;
   pointer-events: none;
-  z-index: 16;
 }
 
 .abcdefGPT-result-tab {
@@ -91,12 +90,13 @@
 
 .custom-button {
   margin-top: 5px;
+  width: 375px;
   top: 0px;
   background-color: #4d55b2;
   color: white;
   padding: 10px;
-  border-radius: 0px 10px 10px 0px;
   pointer-events: auto;
+  z-index: 16;
 }
 
 
@@ -124,6 +124,7 @@ body, th, td, input, select, textarea, button, pre {
   position: absolute;
   top: 0px;
   left: 0px;
+  padding-bottom: 10px;
 }
 
 .loading-page img{
@@ -173,15 +174,17 @@ body, th, td, input, select, textarea, button, pre {
   margin-bottom: 10px;
   padding: 10px;
   text-align: center;
-  background-color: #f3f4fc;
+  background-color: white;
   height: 50px;
   line-height: 50px;
   border-radius: 15px;
   cursor: pointer;
+  box-shadow: 1px 1px 0 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid #ececec;
 }
 
 .menu_bar ul li a{
-  color: #584de4;
+  color: black;
 }
 
 .apt_name{
@@ -255,7 +258,7 @@ body, th, td, input, select, textarea, button, pre {
 
 .content_main .content_box{
   margin-top: 10px;
-  background-color: #C8CEFF;
+  background-color: #ffffff;
   border-radius: 15px;
   width: 335px;
   font-weight: bold;
@@ -293,7 +296,7 @@ body, th, td, input, select, textarea, button, pre {
   text-align: left;
   padding: 20px 0px;
   display: flex;
-  
+  border-bottom: 1px solid #f3f3f3;
 }
 
 .seoulA a{
@@ -314,25 +317,32 @@ body, th, td, input, select, textarea, button, pre {
 
 .Msg_send{
   display: flex;
-  justify-content: center;
+  justify-content: left;
+  width: 330px;
+  height: 50px;
+  border: 2px solid black;
+  border-radius: 15px;
 }
 
 .Msg_send .Msg_area{
-  border: 2px solid black;
-  border-radius: 15px;
-  width: 250px;
+  width: 280px;
   height: 50px;
   padding-left: 5px;
-  margin-top: 20px;
+  background:none;
 }
 .Msg_Btn{
-  margin-top: 20px;
   font-size: 15px;
   height: 50px;
-  border: 2px solid black;
-  border-radius: 15px;
   margin-left: 10px;
-  line-height: 30px;
+  line-height: 35px;
+  position: absolute;
+  right: 40px;
+}
+
+.Msg_Btn img{
+  margin-top: 10px;
+  width: 20px;
+  height: 20px;
 }
 
 .custom-scroll-menu-container{
@@ -401,7 +411,7 @@ body, th, td, input, select, textarea, button, pre {
 
   width: 335px;
   font-size: 15px;
-  background-color: #C8CEFF;
+  background-color: #ffffff;
   border-radius: 10px;
 }
 
@@ -431,8 +441,9 @@ body, th, td, input, select, textarea, button, pre {
 }
 
 .GPT_Conv div:nth-child(even){
-  background-color: #C8CEFF;
+  background-color: #FFFFFF;
   margin-bottom: 10px;
+  border-bottom: 1px solid #f3f3f3;
   text-align: left;
 }
 .GPT_Conv div:nth-child(odd){
@@ -441,7 +452,7 @@ body, th, td, input, select, textarea, button, pre {
 }
 
 .GPT_Conv div a{
-  width: 3300px;
+  width: 310px;
   margin: 0px 20px;
   display: inline-block;
 }
@@ -455,7 +466,7 @@ body, th, td, input, select, textarea, button, pre {
 .allAptInfo{
   margin-top: 10px;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .allAptInfo li{
