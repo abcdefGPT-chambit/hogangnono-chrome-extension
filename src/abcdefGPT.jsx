@@ -38,10 +38,10 @@ function AbcdefGPT() {
     setIsDivClickable(!isDivClickable);
     if(renderState === 'initial'){
       const timer = setTimeout(() => {
-        if(TestData && TestData.trades.length>0){
+        if(AptData && AptData.trades.length>0){
           setRenderState('StartPage');
         
-          setSqIsActive(TestData.trades[0].apt_sq)
+          setSqIsActive(AptData.trades[0].apt_sq)
         }else{
           setRenderState('aptList')
         }
@@ -72,49 +72,49 @@ function AbcdefGPT() {
   };
 
   const handleShowMoreEnv = () =>{
-    setShowAllEnv(TestData.reviews.filter(item => item.category==="1").length);
+    setShowAllEnv(AptData.reviews.filter(item => item.category==="1").length);
   };
   const handleShowLessEnv = () =>{
     setShowAllEnv(2);
   };
   const handleShowMoreComm = () =>{
-    setShowAllComm(TestData.reviews.filter(item => item.category==="2").length);
+    setShowAllComm(AptData.reviews.filter(item => item.category==="2").length);
   };
   const handleShowLessComm = () =>{
     setShowAllComm(2);
   };
   const handleShowMoreAptChar = () =>{
-    setShowAllAptChar(TestData.reviews.filter(item => item.category==="3").length);
+    setShowAllAptChar(AptData.reviews.filter(item => item.category==="3").length);
   };
   const handleShowLessAptChar = () =>{
     setShowAllAptChar(2);
   };
   const handleShowMoreStore = () =>{
-    setShowAllStore(TestData.reviews.filter(item => item.category==="4").length);
+    setShowAllStore(AptData.reviews.filter(item => item.category==="4").length);
   };
   const handleShowLessStore = () =>{
     setShowAllStore(2);
   };
   const handleShowMoreTraffic = () =>{
-    setShowAllTraffic(TestData.reviews.filter(item => item.category==="5").length);
+    setShowAllTraffic(AptData.reviews.filter(item => item.category==="5").length);
   };
   const handleShowLessTraffic = () =>{
     setShowAllTraffic(2);
   };
   const handleShowMoreSchool = () =>{
-    setShowAllSchool(TestData.reviews.filter(item => item.category==="6").length);
+    setShowAllSchool(AptData.reviews.filter(item => item.category==="6").length);
   };
   const handleShowLessSchool = () =>{
     setShowAllSchool(2);
   };
   const handleShowMoreNoise = () =>{
-    setShowAllNoise(TestData.reviews.filter(item => item.category==="7").length);
+    setShowAllNoise(AptData.reviews.filter(item => item.category==="7").length);
   };
   const handleShowLessNoise = () =>{
     setShowAllNoise(2);
   };
   const handleShowMoreParking = () =>{
-    setShowAllParking(TestData.reviews.filter(item => item.category==="0").length);
+    setShowAllParking(AptData.reviews.filter(item => item.category==="0").length);
   };
   const handleShowLessParking = () =>{
     setShowAllParking(2);
@@ -183,12 +183,7 @@ function AbcdefGPT() {
 
   const handleGptKeyDown = (event) =>{
     if(event.key === 'Enter'){
-      if(event.nativeEvent.isComposing){
-        handlePrint();
-      }
-      else{
-        setInputText('');
-      }
+      handlePrint();
     }
   }
 
@@ -201,9 +196,9 @@ function AbcdefGPT() {
 
   const aptURL = "https://abcdefgpt.site/getdata?apt_code="+aptCode+"&apt_name="+aptName
 
-  const TestData = useFetch(aptURL);
-  if(TestData !== undefined && TestData !== null && TestData.length){
-    console.log(TestData);
+  const AptData = useFetch(aptURL);
+  if(AptData !== undefined && AptData !== null && AptData.length){
+    console.log(AptData);
   }
 
 
@@ -321,12 +316,12 @@ function AbcdefGPT() {
               <div className='aptPrice'>
                 <div className='content_header'>
                   <img src="https://i.imgur.com/lYgSkrc.jpg" alt="logo"/>
-                  <a>아파트 거래 분석</a><a style={{fontSize:'10px', marginLeft:'20px'}}>※최근 1년 실거래를 분석한 결과입니다.</a>
+                  <a>아파트 거래 분석</a><a style={{fontSize:'10px', marginLeft:'20px'}}>※최근 3년 실거래를 분석한 결과입니다.</a>
                 </div>
                 <div className='content_main'>
                   <div className='custom-scroll-menu-container'>
                     <ul>
-                     {TestData.trades.map((item)=>(
+                     {AptData.trades.map((item)=>(
                       <li
                         key={item.apt_sq}
                         className={(item.apt_sq===sqIsActive ? 'menu-active' : '')}  
@@ -338,7 +333,7 @@ function AbcdefGPT() {
                     </ul>
                   </div>
                   <div style={{marginTop:'10px'}}>
-                      {TestData.trades.map((item)=>(
+                      {AptData.trades.map((item)=>(
                         <div 
                           key={item.apt_sq}
                           className={item.apt_sq==sqIsActive ? 'info-active': 'info-hidden'}
@@ -411,7 +406,7 @@ function AbcdefGPT() {
 
 
                   {/*<h1 className='typing'>
-                    {TestData ? <div>{JSON.stringify(TestData.trades)}</div> : <p>Loading...</p>}
+                    {AptData ? <div>{JSON.stringify(AptData.trades)}</div> : <p>Loading...</p>}
     </h1>*/}
 
                 </div>
@@ -469,7 +464,7 @@ function AbcdefGPT() {
                     <li className='topic'>
                     <a>환경</a>
                       <ul className='reviews'>
-                        {TestData.reviews.filter(item => item.category ==="1").slice(0,showAllEnv)
+                        {AptData.reviews.filter(item => item.category ==="1").slice(0,showAllEnv)
                         .map((item, index)=>(
                           <li
                             className='comments' 
@@ -478,7 +473,7 @@ function AbcdefGPT() {
                           </li>
                         ))}
                       </ul>
-                      {TestData.reviews.filter(item => item.category==="1").length >showAllEnv ?(
+                      {AptData.reviews.filter(item => item.category==="1").length >showAllEnv ?(
                         <button onClick={handleShowMoreEnv}>더보기</button>
                       ):(
                         <button onClick={handleShowLessEnv}>접기</button>
@@ -487,7 +482,7 @@ function AbcdefGPT() {
                     <li className='topic'>
                     <a>커뮤니티</a>
                       <ul className='reviews'>
-                        {TestData.reviews.filter(item => item.category ==="2").slice(0,showAllComm)
+                        {AptData.reviews.filter(item => item.category ==="2").slice(0,showAllComm)
                         .map((item, index)=>(
                           <li
                             className='comments' 
@@ -496,7 +491,7 @@ function AbcdefGPT() {
                           </li>
                         ))}
                       </ul>
-                      {TestData.reviews.filter(item => item.category==="2").length >showAllComm ?(
+                      {AptData.reviews.filter(item => item.category==="2").length >showAllComm ?(
                         <button onClick={handleShowMoreComm}>더보기</button>
                       ):(
                         <button onClick={handleShowLessComm}>접기</button>
@@ -506,7 +501,7 @@ function AbcdefGPT() {
                     <li className='topic'>
                       <a>동별특징</a>
                       <ul className='reviews'>
-                        {TestData.reviews.filter(item => item.category ==="3").slice(0,showAllAptChar)
+                        {AptData.reviews.filter(item => item.category ==="3").slice(0,showAllAptChar)
                         .map((item, index)=>(
                           <li
                             className='comments' 
@@ -515,7 +510,7 @@ function AbcdefGPT() {
                           </li>
                         ))}
                       </ul>
-                      {TestData.reviews.filter(item => item.category==="3").length >showAllAptChar ?(
+                      {AptData.reviews.filter(item => item.category==="3").length >showAllAptChar ?(
                         <button onClick={handleShowMoreAptChar}>더보기</button>
                       ):(
                         <button onClick={handleShowLessAptChar}>접기</button>
@@ -524,7 +519,7 @@ function AbcdefGPT() {
                     <li className='topic'>
                       <a>주변상권</a>
                       <ul className='reviews'>
-                        {TestData.reviews.filter(item => item.category ==="4").slice(0,showAllStore)
+                        {AptData.reviews.filter(item => item.category ==="4").slice(0,showAllStore)
                         .map((item, index)=>(
                           <li
                             className='comments' 
@@ -533,7 +528,7 @@ function AbcdefGPT() {
                           </li>
                         ))}
                       </ul>
-                      {TestData.reviews.filter(item => item.category==="4").length >showAllStore ?(
+                      {AptData.reviews.filter(item => item.category==="4").length >showAllStore ?(
                         <button onClick={handleShowMoreStore}>더보기</button>
                       ):(
                         <button onClick={handleShowLessStore}>접기</button>
@@ -542,7 +537,7 @@ function AbcdefGPT() {
                     <li className='topic'>
                       <a>교통</a>
                       <ul className='reviews'>
-                        {TestData.reviews.filter(item => item.category ==="5").slice(0,showAllTraffic)
+                        {AptData.reviews.filter(item => item.category ==="5").slice(0,showAllTraffic)
                         .map((item, index)=>(
                           <li
                             className='comments' 
@@ -551,7 +546,7 @@ function AbcdefGPT() {
                           </li>
                         ))}
                       </ul>
-                      {TestData.reviews.filter(item => item.category==="5").length >showAllTraffic ?(
+                      {AptData.reviews.filter(item => item.category==="5").length >showAllTraffic ?(
                         <button onClick={handleShowMoreTraffic}>더보기</button>
                       ):(
                         <button onClick={handleShowLessTraffic}>접기</button>
@@ -560,7 +555,7 @@ function AbcdefGPT() {
                     <li className='topic'>
                       <a>학군</a>
                       <ul className='reviews'>
-                        {TestData.reviews.filter(item => item.category ==="6").slice(0,showAllSchool)
+                        {AptData.reviews.filter(item => item.category ==="6").slice(0,showAllSchool)
                         .map((item, index)=>(
                           <li
                             className='comments' 
@@ -569,7 +564,7 @@ function AbcdefGPT() {
                           </li>
                         ))}
                       </ul>
-                      {TestData.reviews.filter(item => item.category==="6").length >showAllSchool ?(
+                      {AptData.reviews.filter(item => item.category==="6").length >showAllSchool ?(
                         <button onClick={handleShowMoreSchool}>더보기</button>
                       ):(
                         <button onClick={handleShowLessSchool}>접기</button>
@@ -578,7 +573,7 @@ function AbcdefGPT() {
                     <li className='topic'>
                       <a>소음</a>
                       <ul className='reviews'>
-                        {TestData.reviews.filter(item => item.category ==="7").slice(0,showAllNoise)
+                        {AptData.reviews.filter(item => item.category ==="7").slice(0,showAllNoise)
                         .map((item, index)=>(
                           <li
                             className='comments' 
@@ -587,7 +582,7 @@ function AbcdefGPT() {
                           </li>
                         ))}
                       </ul>
-                      {TestData.reviews.filter(item => item.category==="7").length >showAllNoise ?(
+                      {AptData.reviews.filter(item => item.category==="7").length >showAllNoise ?(
                         <button onClick={handleShowMoreNoise}>더보기</button>
                       ):(
                         <button onClick={handleShowLessNoise}>접기</button>
@@ -596,7 +591,7 @@ function AbcdefGPT() {
                     <li className='topic'>
                       <a>주차</a>
                       <ul className='reviews'>
-                        {TestData.reviews.filter(item => item.category ==="0").slice(0,showAllParking)
+                        {AptData.reviews.filter(item => item.category ==="0").slice(0,showAllParking)
                         .map((item, index)=>(
                           <li
                             className='comments' 
@@ -605,7 +600,7 @@ function AbcdefGPT() {
                           </li>
                         ))}
                       </ul>
-                      {TestData.reviews.filter(item => item.category==="0").length >showAllParking ?(
+                      {AptData.reviews.filter(item => item.category==="0").length >showAllParking ?(
                         <button onClick={handleShowMoreParking}>더보기</button>
                       ):(
                         <button onClick={handleShowLessParking}>접기</button>
@@ -728,8 +723,8 @@ function AbcdefGPT() {
                     </div>
                     <div style={{height:'10px'}}></div>
                     <div className='Msg_send'>
-                      <input type='text' className='Msg_area' id='Msg_area' placeholder='거래량 분석 질문하기' value={inputText} onKeyDown={handleGptKeyDown} onChange={handleInputChange}></input>
-                      <button className='Msg_Btn' onClick={handlePrint}>
+                      <input type='text' className='Msg_area' id='Msg_area' placeholder='거래량 분석 질문하기' value={inputText} disabled={visibleLoading} onKeyDown={handleGptKeyDown} onChange={handleInputChange}></input>
+                      <button className='Msg_Btn' onClick={handlePrint} disabled={visibleLoading}>
                         <img src='https://i.imgur.com/QtJ2sSp.png'/>
                       </button>
                     </div>
@@ -903,8 +898,8 @@ function AbcdefGPT() {
                     </div>
                     <div style={{height:'10px'}}></div>
                     <div className='Msg_send'>
-                      <input type='text' className='Msg_area' id='Msg_area' placeholder='거래량 분석 질문하기' value={inputText} onKeyDown={handleGptKeyDown} onChange={handleInputChange}></input>
-                      <button className='Msg_Btn' onClick={handlePrint}>
+                      <input type='text' className='Msg_area' id='Msg_area' placeholder='거래량 분석 질문하기' value={inputText} disabled={visibleLoading} onKeyDown={handleGptKeyDown} onChange={handleInputChange}></input>
+                      <button className='Msg_Btn' onClick={handlePrint} disabled={visibleLoading}>
                         <img src='https://i.imgur.com/QtJ2sSp.png'/>
                       </button>
                     </div>
