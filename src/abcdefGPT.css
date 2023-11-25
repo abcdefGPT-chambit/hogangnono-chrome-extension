@@ -83,10 +83,20 @@
   top: 0px;
   right: 9px;
   box-sizing: border-box;
-  padding-right: 15px;
+  margin-right: 15px;
   height: 56px;
   color: rgb(127, 126, 146);
 }
+
+.search-button {
+  position: absolute;
+  top: 0px;
+  right: 9px;
+  box-sizing: border-box;
+  height: 56px;
+  color: rgb(127, 126, 146);
+}
+
 
 .custom-button {
   margin-top: 5px;

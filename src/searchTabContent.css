@@ -1,0 +1,108 @@
+.search-tab {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 375px;
+    display: block;
+    height: 100%;
+    overflow-y: scroll;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.075), -1px 1px 1px rgba(0, 0, 0, 0.03), 1px 1px 1px rgba(0, 0, 0, 0.03);
+    box-shadow: -8px 0px 8px rgba(0, 0, 0, 0.15), 0px 2px 2px rgba(0, 0, 0, 0.075), 1px 1px 1px rgba(0, 0, 0, 0.03);
+}
+
+.hidden-div {
+    display: none;
+  }
+  
+.clickable-div {
+    max-height: 100vh;
+    overflow-y: auto;
+    pointer-events: auto;
+    user-select: none;
+}
+  
+.white-bg {
+    background-color: white;
+}
+
+.custom-header {
+    height: 40px;
+    border-bottom: 8px solid #f3f3f3;
+}
+
+.top-header{
+    margin-top: 15px;
+    text-align: center;
+}  
+
+.close-button {
+    position: absolute;
+    top: 0px;
+    right: 9px;
+    box-sizing: border-box;
+    height: 56px;
+    color: rgb(127, 126, 146);
+}
+  
+  .search-tab-blew {
+    background-color: white;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+  
+  .search-header {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .search-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    /* 검색 아이콘 스타일링 추가 */
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    /* 닫기 아이콘 스타일링 추가 */
+  }
+  
+  .search-results {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  .search-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+  }
+  
+  /* 리스트 아이템 호버 스타일 */
+  .search-item:hover {
+    background-color: #f9f9f9;
+  }
+  
+  /* 닫기 버튼 스타일 */
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    /* 여기에 닫기 버튼 스타일 추가 */
+  }
+  
+  .hidden-div {
+    display: none;
+  }

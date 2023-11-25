@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { createRoot } from 'react-dom/client';
+import SearchTabContent from './searchTabContent.jsx'
 import {Oval} from "react-loader-spinner";
 import './abcdefGPT.css';
 import useFetch from './usefetch';
@@ -239,7 +241,37 @@ function AbcdefGPT() {
     textDecoration: buttonHover ? 'underline': 'none',
   };
 
+  const toggleNewTab = () => {
+    const parentDiv = document.querySelector('.abcdefGPT-result-tab').parentNode;
+    const newDivName = 'search-tab-div';
+    let newTabDiv = parentDiv.querySelector(`div[name="${newDivName}"]`);
 
+    if (!newTabDiv) {
+      newTabDiv = document.createElement('div');
+      newTabDiv.setAttribute('name', newDivName);
+      parentDiv.appendChild(newTabDiv);
+
+      const reactRoot = createRoot(newTabDiv);
+      reactRoot.render(<SearchTabContent />);
+    }
+
+    if(!isDivClickable) {
+      if(!(newTabDiv.classList.contains('hidden-div')))
+      newTabDiv.classList.add('hidden-div');
+    } else {
+      if(newTabDiv.classList.contains('hidden-div')){
+        newTabDiv.classList.remove('hidden-div');
+      } else {
+        newTabDiv.classList.add('hidden-div');
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (!isDivClickable) {
+      toggleNewTab();
+    }
+  }, [isDivClickable]);
 
 
   //Loading Page
@@ -295,6 +327,12 @@ function AbcdefGPT() {
               <div className='apt_name'>
                 <h3>{matches[1]}</h3>
               </div>
+              <button className='search-button' onClick={toggleNewTab} style={{ border: 'none', background: 'none', cursor: 'pointer' }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </button>
               <button className='close-button' onClick={toggleDivClickability}>
                 <span className='css-33lnss'>
                       <span className='css-1oc9vj8'>
