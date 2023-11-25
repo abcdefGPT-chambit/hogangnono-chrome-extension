@@ -34,15 +34,6 @@
     margin-top: 15px;
     text-align: center;
 }  
-
-.close-button {
-    position: absolute;
-    top: 0px;
-    right: 9px;
-    box-sizing: border-box;
-    height: 56px;
-    color: rgb(127, 126, 146);
-}
   
   .search-tab-blew {
     background-color: white;
@@ -65,20 +56,6 @@
     border-radius: 4px;
   }
   
-  .search-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    /* 검색 아이콘 스타일링 추가 */
-  }
-  
-  .close-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    /* 닫기 아이콘 스타일링 추가 */
-  }
-  
   .search-results {
     max-height: 300px;
     overflow-y: auto;
@@ -94,15 +71,31 @@
   .search-item:hover {
     background-color: #f9f9f9;
   }
-  
-  /* 닫기 버튼 스타일 */
-  .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    /* 여기에 닫기 버튼 스타일 추가 */
-  }
-  
-  .hidden-div {
-    display: none;
-  }
+
+  .search-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc; /* Border color as needed */
+  padding-right: 40px; /* Adjust based on icon size */
+}
+
+.search-input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  padding: 8px;
+}
+
+.icon-container {
+  position: absolute;
+  right: 5px;
+  display: flex;
+}
+
+.search-icon,
+.close-icon {
+margin-left: 5px;
+cursor: pointer;
+color: rgb(127, 126, 146);
+}

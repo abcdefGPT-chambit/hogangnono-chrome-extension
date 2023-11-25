@@ -36,9 +36,7 @@ function SearchTabContent() {
 
   useEffect(() => { //when change search query
     const delayDebounce = setTimeout(() => {
-      if (searchQuery) {
-        fetchSearchResults();
-      }
+      fetchSearchResults();
     }, 500); // 500ms의 디바운스 시간
 
     return () => clearTimeout(delayDebounce);
@@ -78,10 +76,16 @@ function SearchTabContent() {
     };
   }, [searchTabRef]);
 
+  //close icon click
+  const clearSearchInput = () => {
+    setSearchQuery(''); // clear
+    setShowResults(false);
+  };
+
   return (
     <div style={{position:'absolute', left:'750px', top:'-190px'}} className={divClassName}>
       <div className="search-tab-blew" ref={searchTabRef}>
-        <div className="search-header" onClick={() => setShowResults(true)}>
+        <div className="search-input-container" onClick={() => setShowResults(true)}>
           <input
             type="text"
             value={searchQuery}
@@ -90,18 +94,22 @@ function SearchTabContent() {
             placeholder="아파트, 지역 또는 학교명으로 검색"
             className="search-input"
           />
-          <button className='search-button' onClick={handleSearch} style={{ border: 'none', background: 'none', cursor: 'pointer' }}>
-            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="6"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          </button>
-          <button onClick={handleClose} className="close-button" style={{ border: 'none', background: 'none', cursor: 'pointer' }}>
-          <svg width="19" height="19" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="11" fill="#D3D3D3" />
-            <path d="M9 9l6 6m0-6l-6 6" stroke="white" stroke-width="2" stroke-linecap="round" />
-          </svg>
-          </button>
+          <div className='icon-container'>
+            {searchQuery && (
+              <button onClick={clearSearchInput} className="close-icon" style={{ border: 'none', background: 'none', cursor: 'pointer' }}>
+              <svg width="19" height="19" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" fill="#D3D3D3" />
+                <path d="M9 9l6 6m0-6l-6 6" stroke="white" stroke-width="2" stroke-linecap="round" />
+              </svg>
+              </button>
+            )}
+            <button className='search-icon' onClick={handleSearch} style={{ border: 'none', background: 'none', cursor: 'pointer' }}>
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="6"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            </button>
+          </div>
         </div>
         { showResults && (
         <div className="search-results"> {/*외부 누르면 이 창 사라지게*/}
