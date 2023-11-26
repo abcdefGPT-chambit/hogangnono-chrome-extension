@@ -23,42 +23,18 @@
 .white-bg {
     background-color: white;
 }
-
-.custom-header {
-    height: 40px;
-    border-bottom: 8px solid #f3f3f3;
-}
-
-.top-header{
-    margin-top: 15px;
-    text-align: center;
-}  
   
-  .search-tab-blew {
-    position: relative;
+.search-tab-blew {
+    position: absolute;
     background-color: white;
-    padding-left: 20px;
-    padding-right: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
     padding-top: 13px;
     width: 335px;
-  }
-  
-  .search-header {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .search-input {
-    flex-grow: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+    z-index: 10;
+}
   
   .search-results {
-    position: absolute;
-    z-index: 1000;
     width: 335px;
     overflow-y: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -71,7 +47,6 @@
     cursor: pointer;
   }
   
-  /* 리스트 아이템 호버 스타일 */
   .search-item:hover {
     background-color: #f9f9f9;
   }
@@ -106,5 +81,9 @@ color: rgb(127, 126, 146);
 
 .centered-message {
     position: absolute;
-    z-index: 5;
   }
+
+.search-content {
+    position: relative;
+    z-index: 1;
+}

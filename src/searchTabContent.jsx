@@ -146,7 +146,7 @@ function SearchTabContent() {
         </div>
         )}
       </div>
-      <div>
+      <div className='search-content'>
       {isLoading && <div>Loading...</div>}
       {!isLoading && !data && (
         <div className="centered-message">검색 결과를 통해 비교해보세요!</div>
