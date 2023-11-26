@@ -2,9 +2,8 @@ import React from "react";
 import {createRoot} from "react-dom/client";
 
 const test = (
-    <div>
-        <h1>Hellow world</h1>
-        <p>aj jefalfjaw jfla;fkwa kkf alfkwjae; oalf jasflkjas;eflkjwa;fkf lksf lwakf ;e</p>
+    <div style={{width:"500px"}}>
+        <h1>abcdefGPT 아파트 분석 확장프로그램</h1>
     </div>
 )
 
