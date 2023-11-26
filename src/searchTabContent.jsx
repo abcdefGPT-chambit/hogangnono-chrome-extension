@@ -54,7 +54,9 @@ function SearchTabContent() {
 
   const handleItemClick = (aptCode, aptName) => { //요소를 클릭했을 때
     console.log(`apt_code: ${aptCode}, apt_name: ${aptName}`);
+    setSearchQuery(aptName);
     fetchData(aptCode, aptName);
+    setShowResults(false);
   };
 
   const fetchData = async (aptCode, aptName) => {

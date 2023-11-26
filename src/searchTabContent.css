@@ -84,6 +84,7 @@ color: rgb(127, 126, 146);
   }
 
 .search-content {
+  margin-top: 50px;
     position: relative;
     z-index: 1;
 }
