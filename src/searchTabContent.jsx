@@ -5,6 +5,8 @@ function SearchTabContent() {
   const [searchResults, setSearchResults] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [showResults, setShowResults] = useState(false);
+  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const searchTabRef   = useRef();
 
   const fetchSearchResults = async () => {
@@ -52,6 +54,25 @@ function SearchTabContent() {
 
   const handleItemClick = (aptCode, aptName) => { //요소를 클릭했을 때
     console.log(`apt_code: ${aptCode}, apt_name: ${aptName}`);
+    fetchData(aptCode, aptName);
+  };
+
+  const fetchData = async (aptCode, aptName) => {
+    setIsLoading(true);
+    try {
+      const encodedAptName = encodeURIComponent(aptName);
+      const url = `https://abcdefgpt.site/getdata?apt_code=${aptCode}&apt_name=${encodedAptName}`;
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const result = await response.json();
+      setData(result);
+    } catch (error) {
+      console.error("Fetching data failed: ", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const divClassName = 'search-tab clickable-div white-bg'
@@ -125,6 +146,34 @@ function SearchTabContent() {
         </div>
         )}
       </div>
+      <div>
+      {isLoading && <div>Loading...</div>}
+      {!isLoading && !data && (
+        <div className="centered-message">검색 결과를 통해 비교해보세요!</div>
+      )}
+      {data && (
+        <div>
+        <h2>{data.apt_name}</h2>
+        <h3>리뷰</h3>
+        <ul>
+          {data.reviews.map((review, index) => (
+            <li key={index}>
+              <strong>카테고리 {review.category}:</strong> {review.review}
+            </li>
+          ))}
+        </ul>
+        <h3>거래 정보</h3>
+        {data.trades.map((trade, index) => (
+          <div key={index}>
+            <p><strong>평수:</strong> {trade.apt_sq}</p>
+            <p>{trade.avg_price}</p>
+            <p>{trade.top_avg_price}</p>
+            <p>{trade.bottom_avg_price}</p>
+          </div>
+        ))}
+      </div>
+      )}
+    </div>
     </div>
   );
 }
