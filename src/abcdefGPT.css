@@ -81,7 +81,7 @@
 .close-button {
   position: absolute;
   top: 0px;
-  right: 9px;
+  right: 13px;
   box-sizing: border-box;
   padding-right: 15px;
   height: 56px;
@@ -166,25 +166,26 @@ body, th, td, input, select, textarea, button, pre {
   border-bottom: 8px solid #f3f3f3;
   overflow: hidden;
   white-space: nowrap;
+  height: 60px;
 }
 
 .menu_bar ul{
   overflow-x: scroll;
   overflow-y: hidden;
-  height: 50px;
+  height: 60px;
 }
 
 .menu_bar ul li{
   font-size: 13px;
   font-weight: bold;
-  display: inline;
+  display: inline-block;
   margin: 3px;
   margin-bottom: 10px;
   padding: 10px;
   text-align: center;
   background-color: white;
-  height: 50px;
-  line-height: 50px;
+  height: 30px;
+  line-height: 30px;
   border-radius: 15px;
   cursor: pointer;
   box-shadow: 1px 1px 0 0 rgba(0, 0, 0, 0.2);
@@ -487,10 +488,6 @@ body, th, td, input, select, textarea, button, pre {
   border: 1px solid black;
 }
 
-.toggle-group{
-  top: 50px
-}
-
 .search-group.except-content{
   height: 100%;
 }
@@ -501,4 +498,14 @@ body, th, td, input, select, textarea, button, pre {
 
 .search-select-group{
   border-bottom: 1px solid #565eb6 !important;
+}
+
+.search-button {
+  position: absolute;
+  top: 0px;
+  right: 9px;
+  box-sizing: border-box;
+  height: 56px;
+  z-index: 100;
+  color: rgb(127, 126, 146);
 }

@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {Oval} from "react-loader-spinner";
 import './abcdefGPT.css';
+import { createRoot } from 'react-dom/client';
 import useFetch from './usefetch';
+import SearchTabContent from './searchTabContent.jsx'
 import { Typewriter } from 'react-simple-typewriter'
 
 
@@ -23,17 +25,24 @@ function AbcdefGPT() {
   const [messages, setMessages] = useState([]);
   const title = document.title;
   const matches = title.match(/'([^']+)'/);
-  const tmpAptCode = document.URL
   const [aptCode, setAptCode] =useState('');
-  const tmpAptName = document.title;
   const [aptName, setAptName] = useState('');
   const [visibleName, setvisibleName] = useState(true);
   const [sqIsActive, setSqIsActive] = useState('');
   const [visibleLoading, setVisibleLoading] = useState(false);
   const [buttonHover, setButtonHover] = useState(false);
+  const [visibleReloadBtn, setVisibleReloadBtn] = useState(false);
+  const [AptData, setAptData] = useState(null);
+  const [serverCon,setServerCon] = useState(0);
 
+  /*
+  const AptData = useFetch(aptURL);
+  */
 
+  
 
+  /* 버튼 클릭 시, (처음 누르면 2초 후 화면 전환)*/
+  /*------------------------------------------------*/
   const toggleDivClickability = () => {
     setIsDivClickable(!isDivClickable);
     if(renderState === 'initial'){
@@ -42,7 +51,8 @@ function AbcdefGPT() {
           setRenderState('StartPage');
         
           setSqIsActive(AptData.trades[0].apt_sq)
-        }else{
+        }
+        else{
           setRenderState('aptList')
         }
         
@@ -50,7 +60,10 @@ function AbcdefGPT() {
     }
     return () => clearTimeout(timer);
   };
+  /*------------------------------------------------*/
 
+  /*네비게이션 바*/
+  /*------------------------------------------------*/
   const handleClick_aptPrice =() =>{
     setRenderState('StartPage')
   };
@@ -70,7 +83,10 @@ function AbcdefGPT() {
   const handleClick_seoulPrice2 =() =>{
     setRenderState('seoulPrice2')
   };
+  /*------------------------------------------------*/
 
+  /*더보기 클릭*/
+  /*------------------------------------------------*/
   const handleShowMoreEnv = () =>{
     setShowAllEnv(AptData.reviews.filter(item => item.category==="1").length);
   };
@@ -119,22 +135,52 @@ function AbcdefGPT() {
   const handleShowLessParking = () =>{
     setShowAllParking(2);
   };
+  /*------------------------------------------------*/
 
   const divClassName = isDivClickable ? 'abcdefGPT-result-tab clickable-div white-bg' : 'abcdefGPT-result-tab hidden-div';
 
+  /* 아파트 이름과 코드 가져오기 */
+  /*------------------------------------------------*/
   useEffect(()=>{
-    const parts = tmpAptCode.split('/');
-    const desiredPart = parts[4];
+    const tmpAptCode = document.URL
 
-    setAptCode(desiredPart);
+    const partsCode = tmpAptCode.split('/');
+    const desiredPartCode = partsCode[4];
+
+    setAptCode(desiredPartCode);
+
+    console.log(desiredPartCode)
+
+    const tmpAptName = document.title;
+ 
+    const partsName = tmpAptName.split('\'');
+    const desiredPartName = partsName[1];
+
+    setAptName(desiredPartName);
+
+    console.log(desiredPartName)
+
+    const aptURL = "https://abcdefgpt.site/getdata?apt_code="+desiredPartCode+"&apt_name="+desiredPartName;
+
+    fetch(aptURL)
+      .then(response=>{
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => setAptData(data))
+      .catch(err =>{
+        console.error('fetch(${url}) error : ', err);
+      });
+    
   }, []);
+  /*------------------------------------------------*/
 
   useEffect(()=>{
-    const parts = tmpAptName.split('\'');
-    const desiredPart = parts[1];
+    console.log(AptData)
+  },[AptData]);
 
-    setAptName(desiredPart);
-  }, []);
 
   const handleInputChange = (e) => {
     setInputText(e.target.value);
@@ -194,19 +240,18 @@ function AbcdefGPT() {
     visibleHandler();
   }
 
-  const aptURL = "https://abcdefgpt.site/getdata?apt_code="+aptCode+"&apt_name="+aptName
 
-  const AptData = useFetch(aptURL);
+  /*
   if(AptData !== undefined && AptData !== null && AptData.length){
     console.log(AptData);
   }
-
+*/
 
   const handleSqClick = (itemName) =>{
     setSqIsActive(itemName);
   }
 
-  const allAptURL = "https://abcdefgpt.site:/get/all-name"
+  const allAptURL = "https://abcdefgpt.site/get/all-name-code"
 
   const allApt = useFetch(allAptURL);
 
@@ -233,6 +278,37 @@ function AbcdefGPT() {
     textDecoration: buttonHover ? 'underline': 'none',
   };
 
+  useEffect(() => {
+    if (!isDivClickable) {
+      toggleNewTab();
+    }
+  }, [isDivClickable]);
+
+  const toggleNewTab = () => {
+    const parentDiv = document.querySelector('.abcdefGPT-result-tab').parentNode;
+    const newDivName = 'search-tab-div';
+    let newTabDiv = parentDiv.querySelector(`div[name="${newDivName}"]`);
+
+    if (!newTabDiv) {
+      newTabDiv = document.createElement('div');
+      newTabDiv.setAttribute('name', newDivName);
+      parentDiv.appendChild(newTabDiv);
+
+      const reactRoot = createRoot(newTabDiv);
+      reactRoot.render(<SearchTabContent />);
+    }
+
+    if(!isDivClickable) {
+      if(!(newTabDiv.classList.contains('hidden-div')))
+      newTabDiv.classList.add('hidden-div');
+    } else {
+      if(newTabDiv.classList.contains('hidden-div')){
+        newTabDiv.classList.remove('hidden-div');
+      } else {
+        newTabDiv.classList.add('hidden-div');
+      }
+    }
+  };
 
 
 
@@ -261,16 +337,6 @@ function AbcdefGPT() {
               />
             </div>
           </div>
-          {/*
-          <div className='custom-content'>
-              <h1>데이터를 표시하는 예시</h1>
-              {isLoading ? (
-              <p>데이터를 로드하는 중...</p>
-              ) : (
-                  <p>{data.str1}</p>
-                  )}
-          </div>
-              */}
         </div>
       </div>
     );
@@ -289,6 +355,12 @@ function AbcdefGPT() {
               <div className='apt_name'>
                 <h3>{matches[1]}</h3>
               </div>
+              <button className='search-button' onClick={toggleNewTab} style={{ border: 'none', background: 'none', cursor: 'pointer' }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </button>
               <button className='close-button' onClick={toggleDivClickability}>
                 <span className='css-33lnss'>
                       <span className='css-1oc9vj8'>
@@ -783,11 +855,13 @@ function AbcdefGPT() {
                   제공되는 아파트는 다음과 같습니다.
                 </h3>
                 <ul className='allAptInfo'>
-                  {allApt.map((item)=>(
-                    <li>
-                      <a>{item.apt_name}</a>
+                  
+                  {allApt.name_and_code.map((item)=>(
+                    <li key={item.apt_name}>
+                      <a href={`https://hogangnono.com/apt/${item.apt_code}`}>{item.apt_name}</a>
                     </li>
                   ))}
+                  
                 </ul>
               </div>
           </div>
