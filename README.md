@@ -25,16 +25,18 @@
 
 ## 기능
 ![image](https://github.com/abcdefGPT/hogangnono-chrome-extension/assets/96281320/0ca040ab-10ca-4202-9bb8-c32230695d5a)
-(최종 완성 이후 세부적인 내용 추가 예정)
+<img width="778" alt="스크린샷 2024-06-08 오후 7 29 30" src="https://github.com/abcdefGPT-chambit/hogangnono-chrome-extension/assets/92677088/006d6d7e-1043-44c0-9e2c-4b1babad254c"/>
 <!-- - 기능 1 -->
 
 
 </br></br>
 
 ## 시작하기  
-**확장 프로그램 다운로드 링크**
-(배포 이후 업로드 예정)
+**확장 프로그램 다운로드 링크 :**
+https://chromewebstore.google.com/detail/abcdefgpt-extension/dnjfkhkfmfpkbiploegmfgflfmdmcgmd?hl=ko
+<img width="1186" alt="스크린샷 2024-06-08 오후 7 41 22" src="https://github.com/abcdefGPT-chambit/hogangnono-chrome-extension/assets/92677088/cc4e26c9-6abe-4a0f-ac20-1310470bce61">
 
+**현재 서버 기능 중단**
 </br>
 
 ---
