@@ -39,6 +39,44 @@ https://chromewebstore.google.com/detail/abcdefgpt-extension/dnjfkhkfmfpkbiploeg
 **현재 서버 기능 중단**
 </br>
 
+## 팀원 소개
+>  **FE 1명 & BE 2명 & 인공지능모델 1명**
+> 
+> 모델 개발에 필요한 데이터 라벨링은 공동 진행
+
+
+<table>
+  <tr>
+    <td><img src="https://github.com/Mulsanne2.png" width="100px" /></td>
+    <td><img src="https://github.com/JungSungYeob.png" width="100px" /></td>
+    <td><img src="https://github.com/bbang-jun.png" width="100px" /></td>
+    <td><img src="https://github.com/Bjimin.png" width="100px" /></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/Mulsanne2">권민철</a>
+    </td>
+    <td align="center"><a href="https://github.com/JungSungYeob">정성엽</a>
+    </td>
+    <td align="center"><a href="https://github.com/bbang-jun">강병준</a>
+    </td>
+    <td align="center"><a href="https://github.com/Bjimin">방지민</a>
+  </tr>
+  <tr>
+    <td align="center">AI Model
+    </td>
+    <td align="center">Frontend
+    </td>
+    <td align="center">Backend
+    </td>
+    <td align="center">Backend
+    </td>
+  </tr>
+</table>
+
+
+<br/>
+
+
 ---
 **로컬에서 확장 프로그램을 테스트 하기 위한 과정**
 - 크롬의 확장 프로그램 -> 확장 프로그램 관리
