@@ -24,7 +24,6 @@
 </br>
 
 ## 기능
-![image](https://github.com/abcdefGPT/hogangnono-chrome-extension/assets/96281320/0ca040ab-10ca-4202-9bb8-c32230695d5a)
 <img width="778" alt="스크린샷 2024-06-08 오후 7 29 30" src="https://github.com/abcdefGPT-chambit/hogangnono-chrome-extension/assets/92677088/006d6d7e-1043-44c0-9e2c-4b1babad254c"/>
 <!-- - 기능 1 -->
 
@@ -38,6 +37,11 @@ https://chromewebstore.google.com/detail/abcdefgpt-extension/dnjfkhkfmfpkbiploeg
 
 **현재 서버 기능 중단**
 </br>
+
+## 결과
+<img width="595" alt="스크린샷 2024-06-08 오후 7 52 54" src="https://github.com/abcdefGPT-chambit/hogangnono-chrome-extension/assets/92677088/a954105f-5761-429b-b54b-157e163f3e31">
+
+<br/>
 
 ## 팀원 소개
 >  **FE 1명 & BE 2명 & 인공지능모델 1명**
